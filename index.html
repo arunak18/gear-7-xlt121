@@ -322,26 +322,30 @@
 
   .poster{
     position:relative;
-    background:var(--poster-bg);
+    background-color:var(--poster-bg);
     color:var(--poster-text);
     padding:1.7rem 1.3rem 1.6rem;
     text-align:center;
-    border:3px solid var(--poster-text);
-    box-shadow:
-      inset 0 0 0 3px var(--poster-bg), inset 0 0 0 5px var(--poster-text),
-      0 12px 26px rgba(0,0,0,0.4);
-    --diamond: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="%231c140c"/></svg>');
-    background-image: var(--diamond), var(--diamond), var(--diamond), var(--diamond);
+    border:1.5px solid var(--poster-text);
+    box-shadow:0 12px 26px rgba(0,0,0,0.4);
+    --flourish-tl: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M2,38 C2,20 6,6 24,4" fill="none" stroke="%237a5230" stroke-width="2.4" stroke-linecap="round"/><path d="M2,28 C4,16 12,10 22,9" fill="none" stroke="%237a5230" stroke-width="1.7" stroke-linecap="round"/><circle cx="24" cy="4" r="2.5" fill="%237a5230"/></svg>');
+    --flourish-tr: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><g transform="translate(40,0) scale(-1,1)"><path d="M2,38 C2,20 6,6 24,4" fill="none" stroke="%237a5230" stroke-width="2.4" stroke-linecap="round"/><path d="M2,28 C4,16 12,10 22,9" fill="none" stroke="%237a5230" stroke-width="1.7" stroke-linecap="round"/><circle cx="24" cy="4" r="2.5" fill="%237a5230"/></g></svg>');
+    --flourish-bl: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><g transform="translate(0,40) scale(1,-1)"><path d="M2,38 C2,20 6,6 24,4" fill="none" stroke="%237a5230" stroke-width="2.4" stroke-linecap="round"/><path d="M2,28 C4,16 12,10 22,9" fill="none" stroke="%237a5230" stroke-width="1.7" stroke-linecap="round"/><circle cx="24" cy="4" r="2.5" fill="%237a5230"/></g></svg>');
+    --flourish-br: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><g transform="translate(40,40) scale(-1,-1)"><path d="M2,38 C2,20 6,6 24,4" fill="none" stroke="%237a5230" stroke-width="2.4" stroke-linecap="round"/><path d="M2,28 C4,16 12,10 22,9" fill="none" stroke="%237a5230" stroke-width="1.7" stroke-linecap="round"/><circle cx="24" cy="4" r="2.5" fill="%237a5230"/></g></svg>');
+    background-image:
+      var(--flourish-tl), var(--flourish-tr), var(--flourish-bl), var(--flourish-br),
+      radial-gradient(circle at 14% 88%, rgba(120,80,40,0.12) 0, transparent 13%),
+      radial-gradient(circle at 90% 22%, rgba(120,80,40,0.10) 0, transparent 11%),
+      radial-gradient(circle at 68% 94%, rgba(120,80,40,0.08) 0, transparent 15%),
+      radial-gradient(circle at 22% 10%, rgba(120,80,40,0.07) 0, transparent 11%);
     background-repeat:no-repeat;
-    background-size:8px 8px;
-    background-position:9px 9px, calc(100% - 9px) 9px, 9px calc(100% - 9px), calc(100% - 9px) calc(100% - 9px);
+    background-size:28px 28px, 28px 28px, 28px 28px, 28px 28px, auto, auto, auto, auto;
+    background-position:6px 6px, calc(100% - 6px) 6px, 6px calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), 0 0, 0 0, 0 0, 0 0;
     transition:transform 0.25s ease, box-shadow 0.25s ease;
   }
   .poster:hover, .poster:focus-within{
     transform:translateY(-6px);
-    box-shadow:
-      inset 0 0 0 3px var(--poster-bg), inset 0 0 0 5px var(--poster-text),
-      0 20px 34px rgba(0,0,0,0.48);
+    box-shadow:0 20px 34px rgba(0,0,0,0.48);
   }
   .poster::before{
     content:""; position:absolute; top:-7px; left:50%; translate:-50% 0; width:14px; height:14px; border-radius:50%;
@@ -680,7 +684,7 @@
             <span class="fruit-power">Stretches for the uncatchable catch and the impossible run — captain's privilege.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">150,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Captain · Opening Bat</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -702,7 +706,7 @@
             <span class="fruit-power">Hunts down every close review in his favor. The DRS fears him.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">120,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">All-Rounder</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -724,7 +728,7 @@
             <span class="fruit-power">Footwork so fast he's at the striker's end before the ball leaves the bowler's hand.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">95,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Finisher</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -746,7 +750,7 @@
             <span class="fruit-power">Every shot lands like a dropped anchor. The boundary rope has filed for retirement.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">88,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Power Hitter</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -768,7 +772,7 @@
             <span class="fruit-power">Yorkers arrive trailing actual flame. The bails never stood a chance.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">82,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Pace Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -790,7 +794,7 @@
             <span class="fruit-power">Bends the ball's path mid-air like it personally owes him money.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">76,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Spin Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -812,7 +816,7 @@
             <span class="fruit-power">Hears the snick before the batter even feels it.</span>
           </div>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">65,000,000</span><span class="bounty-dash">-</span></div>
-          <p class="issuer">Grand Line Turf League</p>
+          <p class="issuer">Marine</p>
           <div class="role">Wicketkeeper</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
