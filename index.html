@@ -215,6 +215,7 @@
 
   /* ---------- hero ---------- */
   .hero{
+    position:relative;
     background:
       radial-gradient(1px 1px at 12% 22%, #fff 0, transparent 60%),
       radial-gradient(1px 1px at 28% 62%, #fff 0, transparent 60%),
@@ -230,7 +231,12 @@
     padding-block:clamp(4rem,10vw,7rem) clamp(5rem,10vw,7rem);
     overflow:hidden;
   }
-  .hero .wrap{ display:grid; grid-template-columns:1.25fr 0.75fr; gap:clamp(2rem,5vw,3rem); align-items:center; }
+  .hero-watermark{
+    position:absolute; top:50%; right:-8%; width:640px; height:640px; max-width:72vw; max-height:72vw;
+    transform:translateY(-50%) rotate(-9deg); opacity:0.08; pointer-events:none; z-index:0;
+  }
+  .hero-horizon{ position:absolute; left:0; right:0; bottom:clamp(3.5rem,7vw,5.5rem); height:110px; opacity:0.55; pointer-events:none; z-index:1; }
+  .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1.25fr 0.75fr; gap:clamp(2rem,5vw,3rem); align-items:center; }
   .hero-eyebrow{
     font-family:'Anton',sans-serif; font-size:0.8rem; letter-spacing:0.24em; text-transform:uppercase;
     color:var(--gold-bright); display:inline-flex; align-items:center; gap:0.7em; margin-bottom:1.1rem;
@@ -262,7 +268,12 @@
   .reveal.in-view{ opacity:1; transform:translateY(0); }
 
   /* ---------- log / about ---------- */
-  .log-section{ background:var(--bg); }
+  .log-section{
+    background:
+      radial-gradient(ellipse 60% 40% at 8% 8%, rgba(122,82,48,0.10), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 96% 88%, rgba(122,82,48,0.08), transparent 60%),
+      var(--bg);
+  }
   .log-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:start; }
   .log-body p{ margin:0 0 1.1rem; max-width:60ch; }
   .log-body p:last-child{ margin-bottom:0; }
@@ -280,48 +291,78 @@
 
   @media (max-width:820px){ .log-grid{ grid-template-columns:1fr; } }
 
-  /* ---------- crew / wanted posters ---------- */
-  .crew-section{ background:var(--bg-alt); }
-  .crew-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.6rem,3vw,2.2rem); }
+  /* ---------- crew / bounty posters ---------- */
+  .crew-section{
+    position:relative;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.12) 0 2px, transparent 2px 128px),
+      repeating-linear-gradient(180deg, rgba(126,88,52,0.95) 0 3px, rgba(98,66,38,0.95) 3px 6px),
+      linear-gradient(180deg, #6e4c30, #593c26);
+  }
+  .crew-section::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.3), transparent 62%);
+  }
+  .crew-section .eyebrow{ color:var(--gold-bright); }
+  .crew-section .eyebrow::before{ background:var(--red); }
+  .crew-section h2.section-title{ color:#f8ecd0; }
+  .crew-section .section-sub{ color:#e3d0ab; }
+  .crew-grid{ position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(1.6rem,3vw,2.2rem); }
   @media (max-width:1020px){ .crew-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:560px){ .crew-grid{ grid-template-columns:1fr; } }
 
   .poster{
     position:relative;
     background:var(--poster-bg); color:var(--poster-text);
-    padding:2.2rem 1.3rem 1.5rem;
+    padding:2.2rem 1.3rem 1.4rem;
     text-align:center;
-    box-shadow:0 10px 22px var(--shadow);
+    box-shadow:0 12px 26px rgba(0,0,0,0.45);
     clip-path:polygon(0% 3%,6% 0%,13% 2.6%,21% 0%,29% 3%,37% 0.6%,45% 3%,53% 0%,61% 2.6%,69% 0%,77% 3%,85% 0.8%,93% 3%,100% 0%,100% 100%,0% 100%);
     transition:transform 0.3s ease, box-shadow 0.3s ease;
   }
   .crew-grid .poster:nth-child(odd){ transform:rotate(-1.4deg); }
   .crew-grid .poster:nth-child(even){ transform:rotate(1.1deg); }
-  .poster:hover, .poster:focus-within{ transform:rotate(0deg) translateY(-6px); box-shadow:0 18px 30px var(--shadow); }
+  .poster:hover, .poster:focus-within{ transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 34px rgba(0,0,0,0.5); }
   .poster::before{
     content:""; position:absolute; top:6px; left:50%; translate:-50% 0; width:14px; height:14px; border-radius:50%;
     background: radial-gradient(circle at 35% 30%, #e6b23d, #7c1c20 75%);
     box-shadow:0 3px 4px rgba(0,0,0,0.4);
   }
   .poster-tag{
-    display:inline-block; font-family:'Anton',sans-serif; font-size:0.68rem; letter-spacing:0.18em;
+    display:inline-block; font-family:'Anton',sans-serif; font-size:0.72rem; letter-spacing:0.2em;
     background:var(--red); color:#fbeed6; padding:0.3rem 0.9rem; margin-bottom:0.9rem;
     clip-path:polygon(6% 0,94% 0,100% 50%,94% 100%,6% 100%,0 50%);
   }
-  .poster-avatar{
-    width:64px; height:64px; border-radius:50%; margin:0 auto 0.8rem; display:flex; align-items:center; justify-content:center;
-    background:var(--navy); color:#f4e8c9; font-family:'Anton',sans-serif; font-size:1.3rem; border:3px solid var(--gold-bright);
+  .poster-portrait{
+    width:82px; height:96px; margin:0 auto 0.85rem; display:flex; align-items:center; justify-content:center;
+    background:
+      repeating-linear-gradient(45deg, rgba(244,232,201,0.06) 0 4px, transparent 4px 8px),
+      var(--navy);
+    color:#f4e8c9; font-family:'Anton',sans-serif; font-size:1.4rem; letter-spacing:0.02em;
+    border:3px solid var(--poster-text); box-shadow:inset 0 0 0 3px var(--gold-bright);
   }
-  .poster h3{ font-size:1.35rem; margin-bottom:0.15rem; }
-  .poster .epithet{ font-style:italic; color:var(--red-deep); font-size:0.92rem; margin-bottom:0.6rem; }
+  .poster h3{ font-size:1.3rem; margin-bottom:0.15rem; }
+  .poster .epithet{ font-style:italic; color:var(--red-deep); font-size:0.9rem; margin-bottom:0.5rem; }
+  .poster .doa{
+    font-family:'Anton',sans-serif; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--red-deep); margin:0 0 0.75rem; opacity:0.85;
+  }
+  .poster .divider{ height:1px; width:68%; margin:0 auto 0.75rem; background:linear-gradient(90deg, transparent, var(--rope), transparent); }
+  .poster .bounty-label{ font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); }
+  .poster .bounty{
+    font-family:'Anton',sans-serif; font-size:clamp(1.4rem,2.2vw,1.7rem); color:var(--poster-text);
+    font-variant-numeric:tabular-nums; letter-spacing:0.01em; margin-bottom:0.85rem;
+  }
   .poster .role{
-    display:inline-block; font-family:'Anton',sans-serif; font-size:0.66rem; letter-spacing:0.14em;
+    display:inline-block; font-family:'Anton',sans-serif; font-size:0.64rem; letter-spacing:0.13em;
     background:transparent; border:1.5px solid var(--rope); color:var(--text-muted);
-    padding:0.25rem 0.7rem; margin-bottom:0.9rem; clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);
+    padding:0.25rem 0.7rem; margin-bottom:0.8rem; clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);
   }
-  .poster .bounty-label{ font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); }
-  .poster .bounty{ font-family:'Anton',sans-serif; font-size:1.35rem; color:var(--red-deep); font-variant-numeric:tabular-nums; margin-bottom:0.7rem; }
-  .poster p.blurb{ font-size:0.86rem; color:var(--text); opacity:0.85; margin:0; line-height:1.55; }
+  .poster p.blurb{ font-size:0.83rem; color:var(--text); opacity:0.85; margin:0; line-height:1.55; }
+  .poster .sighting{
+    margin:0.9rem 0 0; padding-top:0.65rem; border-top:1px dashed var(--border);
+    font-size:0.66rem; letter-spacing:0.03em; color:var(--text-muted); font-style:italic;
+  }
 
   /* ---------- voyage / fixtures ---------- */
   .voyage-section{
@@ -362,7 +403,12 @@
   .result-pill p{ margin:0.3rem 0 0; font-size:0.92rem; color:#e6d9ba; }
 
   /* ---------- chest / trophies ---------- */
-  .chest-section{ background:var(--bg); }
+  .chest-section{
+    background:
+      radial-gradient(ellipse 55% 40% at 94% 4%, rgba(122,82,48,0.10), transparent 60%),
+      radial-gradient(ellipse 45% 35% at 4% 92%, rgba(122,82,48,0.08), transparent 60%),
+      var(--bg);
+  }
   .chest-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--border); }
   .chest-list li{
     display:grid; grid-template-columns:6rem 1fr auto; gap:1rem; align-items:center;
@@ -381,7 +427,11 @@
   }
 
   /* ---------- join ---------- */
-  .join-section{ background:var(--bg-alt); }
+  .join-section{
+    background:
+      radial-gradient(ellipse 55% 45% at 10% 10%, rgba(122,82,48,0.10), transparent 60%),
+      var(--bg-alt);
+  }
   .join-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,3.5rem); align-items:start; }
   .join-body p{ max-width:56ch; }
   .join-details{ list-style:none; margin:1.4rem 0 0; padding:0; display:grid; gap:0.8rem; }
@@ -458,12 +508,23 @@
 
 <main id="top">
   <section class="hero">
+    <svg class="hero-watermark" aria-hidden="true"><use href="#emblem"/></svg>
+    <svg class="hero-horizon" viewBox="0 0 1200 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g fill="#0a1b28">
+        <polygon points="110,118 205,118 188,86 132,86"/>
+        <rect x="156" y="48" width="4" height="42"/>
+        <polygon points="160,52 160,86 192,84"/>
+        <polygon points="960,124 1075,124 1055,92 985,92"/>
+        <rect x="1028" y="54" width="4" height="42"/>
+        <polygon points="1032,58 1032,92 1068,89"/>
+      </g>
+    </svg>
     <div class="wrap">
       <div>
         <div class="hero-eyebrow">Turf Cricket Crew · Est. 2024</div>
         <h1>GEAR 7</h1>
         <p class="hero-tagline">Luffy stopped at Gear Five. We had an over left.</p>
-        <p class="hero-desc">Six friends, one floodlit turf, and a batting order that refuses to play it safe. Welcome aboard the Thousand Sunny of box cricket — every death over is a battle, and every teammate is nakama.</p>
+        <p class="hero-desc">Seven friends, one floodlit turf, and a batting order that refuses to play it safe. Welcome aboard the Thousand Sunny of box cricket — every death over is a battle, and every teammate is nakama.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#voyage">View the Voyage Log</a>
           <a class="btn btn-ghost" href="#join">Join the Crew</a>
@@ -483,7 +544,7 @@
       <div class="log-grid">
         <div class="reveal">
           <div class="eyebrow">Captain's Log</div>
-          <h2 class="section-title">How Six Friends Became a Crew</h2>
+          <h2 class="section-title">How Seven Friends Became a Crew</h2>
           <div class="log-body" style="margin-top:1.4rem;">
             <p><span class="cap">Day 1, 2024.</span> Rented turf, borrowed pads, a scoring app, and a group chat named "Turf Losers XI." We lost our first four matches by a combined 61 runs and decided the name had to go. If Luffy could break past his own ceiling and call it Gear Five, we could call our last-over hitting Gear Seven — a power that, strictly speaking, doesn't exist yet. Neither did our death-over economy, until it did.</p>
             <p>Two years, one league title, and several suspiciously specific lbw appeals later, GEAR 7 plays every Tuesday and Thursday under lights at Grand Line Turf Arena. We still argue about DRS on a ground that doesn't have DRS.</p>
@@ -504,98 +565,108 @@
   <section class="crew-section" id="crew">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">Wanted</div>
+        <div class="eyebrow">Marine Bounty Board</div>
         <h2 class="section-title">The Crew of Gear 7</h2>
-        <p class="section-sub">Eight pirates. One turf. Zero mercy in the death overs.</p>
+        <p class="section-sub">Seven rookie pirates, seven bounties. Newly sighted on the Grand Line turf circuit.</p>
       </div>
       <div class="crew-grid">
 
         <div class="poster reveal">
           <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">AM</div>
-          <h3>Arjun Menon</h3>
-          <p class="epithet">"Red-Hawk"</p>
+          <div class="poster-portrait">AR</div>
+          <h3>Arun</h3>
+          <p class="epithet">"Straw Hat"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
+          <div class="bounty-label">Bounty</div>
+          <div class="bounty">฿150,000,000</div>
           <div class="role">Captain · Opening Bat</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">฿ 1,240 Runs</div>
           <p class="blurb">Walks to the crease like he owns the ground. Hooks the first ball for six out of principle.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
           <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">KS</div>
-          <h3>Kabir Sheikh</h3>
-          <p class="epithet">"Iron Wrist"</p>
-          <div class="role">Vice-Captain · Finisher</div>
+          <div class="poster-portrait">AM</div>
+          <h3>Ameer</h3>
+          <p class="epithet">"Pirate Hunter"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
           <div class="bounty-label">Bounty</div>
-          <div class="bounty">SR 187</div>
-          <p class="blurb">Never met a last over he didn't enjoy. Calls every six "routine."</p>
+          <div class="bounty">฿120,000,000</div>
+          <div class="role">Vice-Captain · All-Rounder</div>
+          <p class="blurb">Three ways to get you out — bat, ball, or sheer glare from mid-on.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
           <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">DR</div>
-          <h3>Devansh Rao</h3>
-          <p class="epithet">"Cyclone"</p>
+          <div class="poster-portrait">VA</div>
+          <h3>Vasanth</h3>
+          <p class="epithet">"Black Leg"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
+          <div class="bounty-label">Bounty</div>
+          <div class="bounty">฿95,000,000</div>
+          <div class="role">Finisher</div>
+          <p class="blurb">Footwork so clean the umpire checks it twice. Never met a last over he didn't enjoy.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
+        </div>
+
+        <div class="poster reveal">
+          <div class="poster-tag">Wanted</div>
+          <div class="poster-portrait">RA</div>
+          <h3>Ram</h3>
+          <p class="epithet">"Cyborg"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
+          <div class="bounty-label">Bounty</div>
+          <div class="bounty">฿88,000,000</div>
+          <div class="role">Power Hitter</div>
+          <p class="blurb">Every six he hits, the ball files a missing-person report.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
+        </div>
+
+        <div class="poster reveal">
+          <div class="poster-tag">Wanted</div>
+          <div class="poster-portrait">JA</div>
+          <h3>Jai</h3>
+          <p class="epithet">"Fire Fist"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
+          <div class="bounty-label">Bounty</div>
+          <div class="bounty">฿82,000,000</div>
           <div class="role">Pace Bowler</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">62 Wickets</div>
-          <p class="blurb">Bowls yorkers with the grudge of a man hit for four sixes in 2024, and never forgot.</p>
+          <p class="blurb">Bowls yorkers hot enough to leave scorch marks on the bails.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
           <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">RN</div>
-          <h3>Ritvik Nair</h3>
-          <p class="epithet">"Whisper"</p>
+          <div class="poster-portrait">YU</div>
+          <h3>Yuvaraj</h3>
+          <p class="epithet">"God"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
+          <div class="bounty-label">Bounty</div>
+          <div class="bounty">฿76,000,000</div>
           <div class="role">Spin Bowler</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">3.9 Econ</div>
-          <p class="blurb">Talks softly. Spins loudly. Batters never see it coming twice.</p>
+          <p class="blurb">Calls every wicket "divine timing." The numbers agree.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
           <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">YA</div>
-          <h3>Yusuf Ansari</h3>
-          <p class="epithet">"Twin Blade"</p>
-          <div class="role">All-Rounder</div>
+          <div class="poster-portrait">MA</div>
+          <h3>Mandy</h3>
+          <p class="epithet">"Soul King"</p>
+          <p class="doa">Dead or Alive</p>
+          <div class="divider"></div>
           <div class="bounty-label">Bounty</div>
-          <div class="bounty">340 Runs / 21 Wkts</div>
-          <p class="blurb">Bats like an opener, bowls like a death specialist, appeals like he's got something to prove.</p>
-        </div>
-
-        <div class="poster reveal">
-          <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">MP</div>
-          <h3>Meera Pillai</h3>
-          <p class="epithet">"Cat's Eye"</p>
+          <div class="bounty">฿65,000,000</div>
           <div class="role">Wicketkeeper</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">28 Dismissals</div>
-          <p class="blurb">Nothing gets past the gloves. The ball has filed a complaint.</p>
-        </div>
-
-        <div class="poster reveal">
-          <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">SI</div>
-          <h3>Sana Iyer</h3>
-          <p class="epithet">"Whirlwind"</p>
-          <div class="role">Utility · Fielder</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">12 Run-Outs</div>
-          <p class="blurb">Covers more ground than the turf technically allows.</p>
-        </div>
-
-        <div class="poster reveal">
-          <div class="poster-tag">Wanted</div>
-          <div class="poster-avatar">PV</div>
-          <h3>Prakash Varma</h3>
-          <p class="epithet">"The Navigator"</p>
-          <div class="role">Head Coach</div>
-          <div class="bounty-label">Bounty</div>
-          <div class="bounty">Toss Record: 19-2</div>
-          <p class="blurb">Reads the pitch like a Log Pose reads magnetism. Rarely wrong about the toss.</p>
+          <p class="blurb">Keeps wicket like a concert — nothing gets past, everything gets applause.</p>
+          <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
       </div>
