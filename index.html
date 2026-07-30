@@ -324,36 +324,42 @@
     color:var(--poster-text);
     padding:2.3rem 1.2rem 1.7rem;
     text-align:center;
-    box-shadow:0 12px 26px rgba(0,0,0,0.45);
+    box-shadow:0 12px 26px rgba(0,0,0,0.45), inset 0 0 0 2px rgba(28,20,12,0.32);
     clip-path:polygon(0% 3%,6% 0%,13% 2.6%,21% 0%,29% 3%,37% 0.6%,45% 3%,53% 0%,61% 2.6%,69% 0%,77% 3%,85% 0.8%,93% 3%,100% 0%,100% 100%,0% 100%);
     transition:transform 0.3s ease, box-shadow 0.3s ease;
   }
   .crew-grid .poster:nth-child(odd){ transform:rotate(-1.4deg); }
   .crew-grid .poster:nth-child(even){ transform:rotate(1.1deg); }
-  .poster:hover, .poster:focus-within{ transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 34px rgba(0,0,0,0.5); }
+  .poster:hover, .poster:focus-within{ transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 34px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(28,20,12,0.32); }
   .poster::before{
     content:""; position:absolute; top:6px; left:50%; translate:-50% 0; width:14px; height:14px; border-radius:50%;
     background: radial-gradient(circle at 35% 30%, #e6b23d, #7c1c20 75%);
     box-shadow:0 3px 4px rgba(0,0,0,0.4);
     z-index:2;
   }
-  .poster-seal{
-    position:absolute; bottom:12px; right:14px; width:36px; height:36px; border-radius:50%;
-    border:2px solid var(--red-deep); color:var(--red-deep); opacity:0.5; transform:rotate(-14deg);
-    display:flex; align-items:center; justify-content:center; font-size:0.95rem;
-  }
   .wanted-stamp{
     font-family:'Anton',sans-serif; font-size:clamp(1.5rem,2.6vw,1.85rem); letter-spacing:0.12em;
     color:var(--poster-text); text-transform:uppercase; line-height:1; margin-bottom:0.55rem;
     text-shadow:1px 1px 0 rgba(165,38,43,0.3);
   }
-  .wanted-rule{ width:64%; height:4px; margin:0 auto 0.2rem; background:var(--poster-text); }
+  .wanted-rule{ width:64%; height:4px; margin:0 auto 0.5rem; background:var(--poster-text); }
   .wanted-rule::after{ content:""; display:block; height:1px; margin-top:4px; background:var(--poster-text); opacity:0.6; }
+  .poster .doa{
+    font-family:'Anton',sans-serif; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--red-deep); margin:0 0 0.9rem; opacity:0.9;
+  }
   .poster-portrait{
-    width:min(120px,72%); aspect-ratio:6/7; margin:0.9rem auto 0.9rem; overflow:hidden;
+    position:relative;
+    width:min(128px,76%); aspect-ratio:6/7; margin:0 auto 0.9rem; overflow:hidden;
     border:3px solid var(--poster-text); box-shadow:inset 0 0 0 3px var(--gold-bright), 0 2px 6px rgba(0,0,0,0.25);
   }
-  .poster-portrait svg{ width:100%; height:100%; display:block; }
+  .poster-portrait svg{ width:100%; height:100%; display:block; position:absolute; inset:0; }
+  .poster-badge{
+    position:absolute; top:-9px; right:-9px; width:32px; height:32px; border-radius:50%;
+    background:var(--gold-bright); border:2px solid var(--poster-text); color:#1c140c; font-size:1rem;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,0.4); z-index:3;
+  }
+  .poster-badge svg{ width:19px; height:19px; }
   .poster .epithet{ font-style:italic; color:var(--red-deep); font-size:0.92rem; margin:0 0 0.2rem; }
   .poster h3{ font-size:1.4rem; margin-bottom:0.7rem; }
   .poster .divider{ height:1px; width:68%; margin:0 auto 0.8rem; background:linear-gradient(90deg, transparent, var(--rope), transparent); }
@@ -364,10 +370,6 @@
   }
   .fruit-name{ display:block; font-family:'Arvo',serif; font-weight:700; font-style:italic; font-size:0.94rem; margin:0.2rem 0 0.3rem; }
   .fruit-power{ display:block; font-size:0.78rem; color:var(--text); opacity:0.85; line-height:1.5; }
-  .poster .doa{
-    font-family:'Anton',sans-serif; font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--red-deep); margin:0 0 0.5rem; opacity:0.9;
-  }
   .bounty-block{ display:flex; align-items:baseline; justify-content:center; gap:0.2em; margin:0 0 0.9rem; }
   .bounty-symbol{ font-family:'Anton',sans-serif; font-size:clamp(1.5rem,2.4vw,1.85rem); }
   .bounty-amount{
@@ -512,10 +514,50 @@
     </g>
   </symbol>
   <symbol id="bust" viewBox="0 0 120 140">
-    <rect x="0" y="0" width="120" height="140" fill="#c9a866"/>
-    <rect x="0" y="0" width="120" height="140" fill="#241a10" fill-opacity="0.08"/>
-    <circle cx="60" cy="50" r="29" fill="#241a10"/>
-    <path d="M22,140 C22,98 40,84 60,84 C80,84 98,98 98,140 Z" fill="#241a10"/>
+    <rect width="120" height="140" fill="#f2e6c9"/>
+    <rect width="120" height="140" fill="#000" fill-opacity="0.04"/>
+    <circle cx="60" cy="50" r="29" fill="#1c140c"/>
+    <path d="M22,140 C22,98 40,84 60,84 C80,84 98,98 98,140 Z" fill="#1c140c"/>
+  </symbol>
+  <symbol id="hat-topper" viewBox="0 0 120 140">
+    <g transform="rotate(-6 60 30)">
+      <path d="M46,34 L50,10 Q60,2 70,10 L74,34 Z" fill="#e0b563" stroke="#1c140c" stroke-width="2"/>
+      <rect x="46" y="24" width="28" height="6" fill="#a5262b"/>
+      <ellipse cx="60" cy="34" rx="34" ry="9" fill="#cf9a3d" stroke="#1c140c" stroke-width="2"/>
+    </g>
+  </symbol>
+  <symbol id="icon-swords" viewBox="0 0 40 40">
+    <g stroke="#1c140c" stroke-width="3.5" stroke-linecap="round">
+      <line x1="8" y1="8" x2="32" y2="32"/>
+      <line x1="32" y1="8" x2="8" y2="32"/>
+    </g>
+    <g fill="#1c140c">
+      <rect x="4" y="4" width="9" height="3.5" transform="rotate(45 8.5 5.75)"/>
+      <rect x="27" y="4" width="9" height="3.5" transform="rotate(-45 31.5 5.75)"/>
+    </g>
+  </symbol>
+  <symbol id="icon-toque" viewBox="0 0 40 40">
+    <rect x="10" y="26" width="20" height="8" fill="#1c140c"/>
+    <circle cx="14" cy="19" r="7" fill="#1c140c"/>
+    <circle cx="20" cy="14" r="8" fill="#1c140c"/>
+    <circle cx="27" cy="19" r="7" fill="#1c140c"/>
+  </symbol>
+  <symbol id="icon-bolt" viewBox="0 0 40 40">
+    <polygon points="22,3 11,22 19,22 16,37 31,16 22,16" fill="#1c140c"/>
+  </symbol>
+  <symbol id="icon-flame" viewBox="0 0 40 40">
+    <path d="M20,3 C27,12 31,19 26,27 C24,31 17,33 13,28 C9,24 11,18 15,20 C13,11 16,7 20,3 Z" fill="#1c140c"/>
+  </symbol>
+  <symbol id="icon-sling" viewBox="0 0 40 40">
+    <g stroke="#1c140c" stroke-width="3.5" stroke-linecap="round" fill="none">
+      <path d="M9,6 L20,21 L31,6"/>
+      <line x1="20" y1="21" x2="20" y2="35"/>
+    </g>
+  </symbol>
+  <symbol id="icon-note" viewBox="0 0 40 40">
+    <circle cx="13" cy="31" r="6" fill="#1c140c"/>
+    <rect x="18" y="7" width="3.5" height="25" fill="#1c140c"/>
+    <path d="M21.5,7 Q32,9 30,18 L26.5,17 Q27.5,12 21.5,10.5 Z" fill="#1c140c"/>
   </symbol>
   <symbol id="logpose" viewBox="0 0 64 64">
     <circle cx="32" cy="32" r="28" fill="#0e2233" stroke="#e0ab52" stroke-width="3"/>
@@ -604,15 +646,18 @@
         <p class="masthead">World Government Notice · Issued by Marine HQ, Turf Division</p>
         <div class="eyebrow">Marine Bounty Board</div>
         <h2 class="section-title">The Crew of Gear 7</h2>
-        <p class="section-sub">Seven rookie pirates. Seven bounties. Seven Devil Fruits nobody at the toss consented to.</p>
+        <p class="section-sub">Seven rookie pirates. Seven bounties. Titles on loan from the Grand Line, never anywhere else.</p>
       </div>
       <div class="crew-grid">
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/><use href="#hat-topper"/></svg>
+            <div class="poster-badge">⚓</div>
+          </div>
           <p class="epithet">"Straw Hat"</p>
           <h3>Ameer Khan</h3>
           <div class="divider"></div>
@@ -621,121 +666,132 @@
             <span class="fruit-name">Gomu Gomu no Mi</span>
             <span class="fruit-power">Stretches for the uncatchable catch and the impossible run — captain's privilege.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">150,000,000</span></div>
           <div class="role">Captain · Opening Bat</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Cutlass"</p>
-          <h3>Arun Thorne</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-swords"/></svg></div>
+          </div>
+          <p class="epithet">"Pirate Hunter"</p>
+          <h3>Arun</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
             <span class="fruit-name">Giri Giri no Mi</span>
-            <span class="fruit-power">Every close review somehow swings his way. Umpires have stopped questioning it.</span>
+            <span class="fruit-power">Hunts down every close review in his favor. The DRS fears him.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">120,000,000</span></div>
-          <div class="role">Vice-Captain · All-Rounder</div>
+          <div class="role">All-Rounder</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Silverstep"</p>
-          <h3>Vasanth Kade</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-toque"/></svg></div>
+          </div>
+          <p class="epithet">"Black Leg"</p>
+          <h3>Vasanth</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
             <span class="fruit-name">Ashi Ashi no Mi</span>
             <span class="fruit-power">Footwork so fast he's at the striker's end before the ball leaves the bowler's hand.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">95,000,000</span></div>
           <div class="role">Finisher</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Ironclad"</p>
-          <h3>Ram Voss</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-bolt"/></svg></div>
+          </div>
+          <p class="epithet">"Cyborg"</p>
+          <h3>Ram</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
             <span class="fruit-name">Dosun Dosun no Mi</span>
             <span class="fruit-power">Every shot lands like a dropped anchor. The boundary rope has filed for retirement.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">88,000,000</span></div>
           <div class="role">Power Hitter</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Blazing"</p>
-          <h3>Jai Ashgrave</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-flame"/></svg></div>
+          </div>
+          <p class="epithet">"Fire Fist"</p>
+          <h3>Jai</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
-            <span class="fruit-name">Bachi Bachi no Mi</span>
-            <span class="fruit-power">Yorkers arrive trailing smoke. The bails never stood a chance.</span>
+            <span class="fruit-name">Mera Mera no Mi</span>
+            <span class="fruit-power">Yorkers arrive trailing actual flame. The bails never stood a chance.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">82,000,000</span></div>
           <div class="role">Pace Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Deadeye"</p>
-          <h3>Yuvaraj Calderos</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-sling"/></svg></div>
+          </div>
+          <p class="epithet">"God"</p>
+          <h3>Yuvaraj</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
             <span class="fruit-name">Kurun Kurun no Mi</span>
             <span class="fruit-power">Bends the ball's path mid-air like it personally owes him money.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">76,000,000</span></div>
           <div class="role">Spin Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
 
         <div class="poster reveal">
-          <div class="poster-seal">⚓</div>
           <div class="wanted-stamp">Wanted</div>
           <div class="wanted-rule"></div>
-          <div class="poster-portrait"><svg aria-hidden="true"><use href="#bust"/></svg></div>
-          <p class="epithet">"Songbird"</p>
-          <h3>Mandy Halloway</h3>
+          <p class="doa">Dead or Alive</p>
+          <div class="poster-portrait">
+            <svg aria-hidden="true"><use href="#bust"/></svg>
+            <div class="poster-badge"><svg aria-hidden="true"><use href="#icon-note"/></svg></div>
+          </div>
+          <p class="epithet">"Soul King"</p>
+          <h3>Mandy</h3>
           <div class="divider"></div>
           <div class="fruit">
             <span class="fruit-label">Devil Fruit</span>
             <span class="fruit-name">Oto Oto no Mi</span>
             <span class="fruit-power">Hears the snick before the batter even feels it.</span>
           </div>
-          <p class="doa">Dead or Alive</p>
           <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">65,000,000</span></div>
           <div class="role">Wicketkeeper</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
