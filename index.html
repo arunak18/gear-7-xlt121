@@ -37,10 +37,10 @@
     --poster-text:#241a10;
     --text:#241a10;
     --text-muted:#5b4a34;
-    --red:#a5262b;
-    --red-deep:#7c1c20;
-    --gold:#a8791f;
-    --gold-bright:#cf9a3d;
+    --red:#b3201f;
+    --red-deep:#8a1414;
+    --gold:#c98a1b;
+    --gold-bright:#e2a83a;
     --navy:#16324a;
     --navy-deep:#0e2233;
     --rope:#8a6239;
@@ -60,10 +60,10 @@
       --poster-text:#241a10;
       --text:#ece0c4;
       --text-muted:#b4a582;
-      --red:#d1454a;
-      --red-deep:#a5262b;
-      --gold:#e0ab52;
-      --gold-bright:#e0ab52;
+      --red:#e14b3f;
+      --red-deep:#b3201f;
+      --gold:#f0ad3a;
+      --gold-bright:#f0ad3a;
       --navy:#a9c9de;
       --navy-deep:#0a1620;
       --rope:#9a7548;
@@ -83,10 +83,10 @@
     --poster-text:#241a10;
     --text:#ece0c4;
     --text-muted:#b4a582;
-    --red:#d1454a;
-    --red-deep:#a5262b;
-    --gold:#e0ab52;
-    --gold-bright:#e0ab52;
+    --red:#e14b3f;
+    --red-deep:#b3201f;
+    --gold:#f0ad3a;
+    --gold-bright:#f0ad3a;
     --navy:#a9c9de;
     --navy-deep:#0a1620;
     --rope:#9a7548;
@@ -105,10 +105,10 @@
     --poster-text:#241a10;
     --text:#241a10;
     --text-muted:#5b4a34;
-    --red:#a5262b;
-    --red-deep:#7c1c20;
-    --gold:#a8791f;
-    --gold-bright:#cf9a3d;
+    --red:#b3201f;
+    --red-deep:#8a1414;
+    --gold:#c98a1b;
+    --gold-bright:#e2a83a;
     --navy:#16324a;
     --navy-deep:#0e2233;
     --rope:#8a6239;
@@ -258,7 +258,12 @@
   .btn-ghost:hover{ background:rgba(224,171,82,0.15); transform:translateY(-3px); }
 
   .hero-emblem-wrap{ display:flex; justify-content:center; }
-  .hero-emblem{ width:min(300px,80%); transform-origin:50% 8%; animation:sway 5s ease-in-out infinite; filter:drop-shadow(0 14px 22px rgba(0,0,0,0.45)); }
+  .hero-logo{
+    display:block; width:min(360px,88%); aspect-ratio:1/1; object-fit:cover; border-radius:50%;
+    border:4px solid var(--gold-bright);
+    box-shadow:0 18px 40px rgba(0,0,0,0.55), 0 0 0 10px rgba(224,171,82,0.14);
+    transform-origin:50% 8%; animation:sway 5s ease-in-out infinite;
+  }
   @keyframes sway{ 0%,100%{ transform:rotate(-3deg);} 50%{ transform:rotate(3deg);} }
 
   .wave{ display:block; width:100%; height:auto; margin-top:clamp(2.5rem,6vw,4rem); }
@@ -340,7 +345,7 @@
   .wanted-stamp{
     font-family:'Anton',sans-serif; font-size:clamp(1.5rem,2.6vw,1.85rem); letter-spacing:0.12em;
     color:var(--poster-text); text-transform:uppercase; line-height:1; margin-bottom:0.55rem;
-    text-shadow:1px 1px 0 rgba(165,38,43,0.3);
+    text-shadow:1px 1px 0 rgba(179,32,31,0.35);
   }
   .wanted-rule{ width:64%; height:4px; margin:0 auto 0.5rem; background:var(--poster-text); }
   .wanted-rule::after{ content:""; display:block; height:1px; margin-top:4px; background:var(--poster-text); opacity:0.6; }
@@ -370,11 +375,15 @@
   }
   .fruit-name{ display:block; font-family:'Arvo',serif; font-weight:700; font-style:italic; font-size:0.94rem; margin:0.2rem 0 0.3rem; }
   .fruit-power{ display:block; font-size:0.78rem; color:var(--text); opacity:0.85; line-height:1.5; }
-  .bounty-block{ display:flex; align-items:baseline; justify-content:center; gap:0.2em; margin:0 0 0.9rem; }
-  .bounty-symbol{ font-family:'Anton',sans-serif; font-size:clamp(1.5rem,2.4vw,1.85rem); }
+  .bounty-block{ display:flex; align-items:baseline; justify-content:center; gap:0.05em; margin:0 0 0.35rem; }
   .bounty-amount{
-    font-family:'Anton',sans-serif; font-size:clamp(1.85rem,3vw,2.3rem);
+    font-family:'Arvo',serif; font-weight:700; font-size:clamp(1.85rem,3vw,2.3rem);
     font-variant-numeric:tabular-nums; letter-spacing:0.01em;
+  }
+  .bounty-dash{ font-family:'Arvo',serif; font-weight:700; font-size:clamp(1.85rem,3vw,2.3rem); }
+  .bounty-currency{
+    display:block; font-family:'Anton',sans-serif; font-size:0.6rem; letter-spacing:0.28em;
+    text-transform:uppercase; color:var(--text-muted); margin:0 0 0.85rem;
   }
   .poster .role{
     display:inline-block; font-family:'Anton',sans-serif; font-size:0.64rem; letter-spacing:0.13em;
@@ -609,7 +618,7 @@
         </div>
       </div>
       <div class="hero-emblem-wrap">
-        <svg class="hero-emblem" aria-label="Gear 7 crest: a straw hat above a cricket ball, crossed bats beneath"><use href="#emblem"/></svg>
+        <img class="hero-logo" src="assets/logo.png" alt="Gear 7 Cricket Team crest: the captain in a Gear-Five-styled pose gripping a cricket bat, banner reading Freedom to Play, Destined to Win." />
       </div>
     </div>
     <svg class="wave" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
@@ -666,7 +675,8 @@
             <span class="fruit-name">Gomu Gomu no Mi</span>
             <span class="fruit-power">Stretches for the uncatchable catch and the impossible run — captain's privilege.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">150,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">150,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Captain · Opening Bat</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -687,7 +697,8 @@
             <span class="fruit-name">Giri Giri no Mi</span>
             <span class="fruit-power">Hunts down every close review in his favor. The DRS fears him.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">120,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">120,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">All-Rounder</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -708,7 +719,8 @@
             <span class="fruit-name">Ashi Ashi no Mi</span>
             <span class="fruit-power">Footwork so fast he's at the striker's end before the ball leaves the bowler's hand.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">95,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">95,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Finisher</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -729,7 +741,8 @@
             <span class="fruit-name">Dosun Dosun no Mi</span>
             <span class="fruit-power">Every shot lands like a dropped anchor. The boundary rope has filed for retirement.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">88,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">88,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Power Hitter</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -750,7 +763,8 @@
             <span class="fruit-name">Mera Mera no Mi</span>
             <span class="fruit-power">Yorkers arrive trailing actual flame. The bails never stood a chance.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">82,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">82,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Pace Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -771,7 +785,8 @@
             <span class="fruit-name">Kurun Kurun no Mi</span>
             <span class="fruit-power">Bends the ball's path mid-air like it personally owes him money.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">76,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">76,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Spin Bowler</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
@@ -792,7 +807,8 @@
             <span class="fruit-name">Oto Oto no Mi</span>
             <span class="fruit-power">Hears the snick before the batter even feels it.</span>
           </div>
-          <div class="bounty-block"><span class="bounty-symbol">฿</span><span class="bounty-amount">65,000,000</span></div>
+          <div class="bounty-block"><span class="bounty-amount">65,000,000</span><span class="bounty-dash">-</span></div>
+          <span class="bounty-currency">Berry</span>
           <div class="role">Wicketkeeper</div>
           <p class="sighting">Last sighted: Grand Line Turf Arena</p>
         </div>
