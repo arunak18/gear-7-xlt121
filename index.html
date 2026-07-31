@@ -332,26 +332,6 @@
     box-shadow:0 22px 38px rgba(0,0,0,0.52);
   }
   .poster-art{ width:100%; display:block; }
-  .poster-caption{ padding:1.4rem 1.2rem 1.5rem; text-align:center; color:var(--poster-text); }
-  .poster-caption .epithet{ font-style:italic; color:var(--red-deep); font-size:0.92rem; margin:0 0 0.2rem; }
-  .poster-caption h3{ font-family:'Arvo',serif; font-weight:700; font-size:1.3rem; margin-bottom:0.7rem; text-transform:uppercase; letter-spacing:0.02em; }
-  .poster-caption .divider{ height:1px; width:68%; margin:0 auto 0.8rem; background:linear-gradient(90deg, transparent, var(--rope), transparent); }
-  .fruit{ margin:0 0 0.9rem; }
-  .fruit-label{
-    display:block; font-family:'Anton',sans-serif; font-size:0.58rem; letter-spacing:0.18em;
-    text-transform:uppercase; color:var(--text-muted);
-  }
-  .fruit-name{ display:block; font-family:'Arvo',serif; font-weight:700; font-style:italic; font-size:0.94rem; margin:0.2rem 0 0.3rem; }
-  .fruit-power{ display:block; font-size:0.78rem; color:var(--text); opacity:0.85; line-height:1.5; }
-  .poster-caption .role{
-    display:inline-block; font-family:'Anton',sans-serif; font-size:0.64rem; letter-spacing:0.13em;
-    background:transparent; border:1.5px solid var(--rope); color:var(--text-muted);
-    padding:0.25rem 0.7rem; margin-bottom:0.2rem; clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);
-  }
-  .poster-caption .sighting{
-    margin:0.9rem 0 0; padding-top:0.65rem; border-top:1px dashed var(--border);
-    font-size:0.65rem; letter-spacing:0.03em; color:var(--text-muted); font-style:italic;
-  }
 
   /* ---------- voyage / fixtures ---------- */
   .voyage-section{
@@ -454,6 +434,19 @@
   .footer-links a{ text-decoration:none; font-family:'Anton',sans-serif; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:#d8c9a3; }
   .footer-links a:hover{ color:#fff; }
   .footer-bottom{ margin-top:2.2rem; padding-top:1.6rem; border-top:1px solid rgba(224,171,82,0.2); font-size:0.82rem; color:#a89873; display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.8rem; }
+
+  /* ---------- background music toggle ---------- */
+  .music-toggle{
+    position:fixed; right:clamp(1rem,3vw,1.6rem); bottom:clamp(1rem,3vw,1.6rem); z-index:60;
+    width:52px; height:52px; border-radius:50%; border:2px solid var(--gold-bright);
+    background:var(--navy-deep); color:var(--gold-bright); font-size:1.3rem;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    box-shadow:0 6px 16px rgba(0,0,0,0.4); transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .music-toggle:hover{ transform:translateY(-2px); background:var(--red-deep); color:#fbeed6; }
+  .music-toggle .music-toggle-icon{ animation:none; }
+  .music-toggle.is-playing .music-toggle-icon{ animation:note-bounce 0.9s ease-in-out infinite; }
+  @keyframes note-bounce{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -573,114 +566,30 @@
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/AmeerPoster.png" alt="Wanted poster: Ameer Khan, Straw Hat, Bounty ฿5,000,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Straw Hat"</p>
-            <h3>Ameer Khan</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Gomu Gomu no Mi</span>
-              <span class="fruit-power">Stretches for the uncatchable catch and the impossible run — captain's privilege.</span>
-            </div>
-            <div class="role">Captain · Opening Bat</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/ArunPoster.png" alt="Wanted poster: Arun, Black Leg, Bounty ฿2,250,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Black Leg"</p>
-            <h3>Arun</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Ashi Ashi no Mi</span>
-              <span class="fruit-power">Footwork so fast he's at the striker's end before the ball leaves the bowler's hand.</span>
-            </div>
-            <div class="role">Finisher</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/VasanthPoster.png" alt="Wanted poster: Vasanth, Pirate Hunter, Bounty ฿2,500,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Pirate Hunter"</p>
-            <h3>Vasanth</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Giri Giri no Mi</span>
-              <span class="fruit-power">Hunts down every close review in his favor. The DRS fears him.</span>
-            </div>
-            <div class="role">All-Rounder</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/RamPoster.png" alt="Wanted poster: Ram, Surgeon of Death, Bounty ฿4,000,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Surgeon of Death"</p>
-            <h3>Ram</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Ope Ope no Mi</span>
-              <span class="fruit-power">Opens a "Room" around off-stump and takes exactly the wicket he's aiming for — surgically.</span>
-            </div>
-            <div class="role">Pace Bowler</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/JaiPoster.png" alt="Wanted poster: Jai, Soul King, Bounty ฿1,500,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Soul King"</p>
-            <h3>Jai</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Oto Oto no Mi</span>
-              <span class="fruit-power">Hears the snick before the batter even feels it.</span>
-            </div>
-            <div class="role">Wicketkeeper</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/YuvarajPoster.png" alt="Wanted poster: Yuvaraj, God, Bounty ฿2,000,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"God"</p>
-            <h3>Yuvaraj</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Kurun Kurun no Mi</span>
-              <span class="fruit-power">Bends the ball's path mid-air like it personally owes him money.</span>
-            </div>
-            <div class="role">Spin Bowler</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
         <div class="poster reveal">
           <img class="poster-art" src="assets/PlayersEdit/MandyPoster.png" alt="Wanted poster: Mandy, Cyborg, Bounty ฿1,850,000,000" loading="lazy" />
-          <div class="poster-caption">
-            <p class="epithet">"Cyborg"</p>
-            <h3>Mandy</h3>
-            <div class="divider"></div>
-            <div class="fruit">
-              <span class="fruit-label">Devil Fruit</span>
-              <span class="fruit-name">Dosun Dosun no Mi</span>
-              <span class="fruit-power">Every shot lands like a dropped anchor. The boundary rope has filed for retirement.</span>
-            </div>
-            <div class="role">Power Hitter</div>
-            <p class="sighting">Last sighted: Grand Line Turf Arena</p>
-          </div>
         </div>
 
       </div>
@@ -825,6 +734,11 @@
   </div>
 </footer>
 
+<button id="musicToggle" class="music-toggle" type="button" aria-pressed="false" aria-label="Play theme music">
+  <span class="music-toggle-icon" aria-hidden="true">♪</span>
+</button>
+<div id="musicPlayerSlot" style="position:fixed; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none;" aria-hidden="true"></div>
+
 <script>
   (function(){
     var toggle = document.getElementById('navToggle');
@@ -855,5 +769,28 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       reveals.forEach(function(el){ io.observe(el); });
     }
+
+    var musicBtn = document.getElementById('musicToggle');
+    var musicSlot = document.getElementById('musicPlayerSlot');
+    var THEME_VIDEO_ID = '_9FeBbWa2p4';
+    var playing = false;
+    musicBtn.addEventListener('click', function(){
+      if (!playing) {
+        musicSlot.innerHTML =
+          '<iframe width="1" height="1" src="https://www.youtube.com/embed/' + THEME_VIDEO_ID +
+          '?autoplay=1&loop=1&playlist=' + THEME_VIDEO_ID + '&controls=0" ' +
+          'allow="autoplay; encrypted-media" frameborder="0"></iframe>';
+        playing = true;
+        musicBtn.classList.add('is-playing');
+        musicBtn.setAttribute('aria-pressed', 'true');
+        musicBtn.setAttribute('aria-label', 'Pause theme music');
+      } else {
+        musicSlot.innerHTML = '';
+        playing = false;
+        musicBtn.classList.remove('is-playing');
+        musicBtn.setAttribute('aria-pressed', 'false');
+        musicBtn.setAttribute('aria-label', 'Play theme music');
+      }
+    });
   })();
 </script>
